@@ -43,4 +43,4 @@ They are especially a bad idea when used in solar farms see Concentrated solar f
 
 Map showing the distribution of insolation over the Earth:
 
-
+![Map of Global Horizontal Irradiation](/images/Power-Production-Distribution-and-Usage-Overview/SolarGIS-Solar-map-World-map-en-compressor-compressor.png)
