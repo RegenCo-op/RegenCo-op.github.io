@@ -34,13 +34,13 @@ The main theme that ties most of these technologies together is the fact that th
 
   * [Wind](#todo):  Wind results from the uneven heating of the planet by the sun. Wind is currently being used on both large and small scales. If done properly wind is a very good source of renewable energy. The large wind farms have some of the same issues as the large solar farms such as good locations for these farms doesn’t usually coincide with where people are living so the same problems of inefficiency of transmission over long distances and the costs associated with new infrastructure. The large wind farms don’t disrupt the land nearly as much as the solar farms so it can still be utilized or left natural. Some have raised concerns over noise, visual pollution or bird and bat kills but these are  minor issues when compared to problems that renewable energy is helping to solve. Many small scale wind turbines are either not as advertised or the site evaluation has not been done to ensure it’s a good investment and/or is installed improperly and don’t perform up to the consumers expectations. The same complaints are used against small scale wind turbines as the large scale ones but they still must be weighed against the alternatives. 
  
-  * [Solar thermal](#todo): Solar thermal can be either unconcentrated or concentrated. 
+  * [Solar thermal](#todo): Solar thermal can be either unconcentrated or concentrated:
      
     ### Solar Potential – Global Horizontal Irradiation
     {: .center}
-     
-    This is a map showing the average energy in kWh/m2 received in a day and over a year. As you can see most of the planet receives generous amounts of sunlight. Click [here](#todo) for more information.
+
     ![Solar potential – global horizontal irradiation](/images/Power-Production-Distribution-and-Usage-Overview/SolarGIS-Solar-map-World-map-en-compressor-compressor.png)      
+    This is a map showing the average energy in kWh/m2 received in a day and over a year. As you can see most of the planet receives generous amounts of sunlight. Click [here](#todo) for more information.
           
     * [Unconcentrated solar thermal](#todo) systems use flat plate collectors or vacuum tube collectors without any mirrors. They can reach temperatures over 100 C but max out around 200 C. They are simple and reliable but are limited to processes that can be done around 100 C. These processes include  hot water for showering, laundry, dishes and for space heating through radiators or underfloor heating, 
     
