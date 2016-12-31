@@ -6,3 +6,15 @@ collections:
         
 sass:
     sass_dir: _sass
+
+name: Regen Co-op
+description: Bringing people together to find and implement solutions that allow a sustainable future for all people and all life.
+url: http://www.regenco-op.org
+logo: /images/logo.png
+
+gems:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - _articles/ArticleTemplate.md

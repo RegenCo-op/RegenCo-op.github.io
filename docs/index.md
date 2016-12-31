@@ -1,12 +1,11 @@
 ---
 layout: article
-title: Renewable Energy GENeration CO-OPerative
 ---
 
 ## Model for a Sustainable Future
 {: .center}
 
-### Mission Statement: To bring people together to find and implement solutions to allow a sustainable future for all people and all life. 
+### Mission Statement: To bring people together to find and implement solutions that allow a sustainable future for all people and all life. 
 
 The  guiding principles of the REGENCO-OP are to live in balance and harmony with each other and with nature. To do this requires us to reduce inefficiency and put the power and consequently the responsibility back into the hands of the common person. The current economic and sociopolitical systems currently in use feedback on each other to reward both waste and the consolidation of power. 
 	
