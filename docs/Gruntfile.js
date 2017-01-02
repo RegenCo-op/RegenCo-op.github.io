@@ -56,25 +56,16 @@ module.exports = function (grunt) {
         },
         referUpdate: {
             test:{
+                 files: [ 
+                    {
+                        expand: true,
+                        cwd: '',
+                        src: ['**/*.{md,html,css,scss}','!{_site,node_modules,.sass_cache}/**'],
+                        dest: ''
+                    },
+                ],
             },
         },
-
-        //update from: images/image.png to images/compressed/image.png
-        //  only if images/compressed/image.png exists in said folder.
-        // 
-        //  //Get a string regex that will match all images in the compressed image folder
-        //  string images_regex = "(?:"
-        //  
-        //  for each <image> in <assests_dir>:
-        //      images_regex += 'image.basename'
-        //      if image.index is not last:
-        //          images_regex += '|'
-        //
-        //  images_regex += ")"
-        //
-        //  //Loop through desired files and regex replace "old" regex match with new
-        //  string old_regex = "/\/images\/" + images_regex + "/g"
-
 
         // watch: {
         //     newImages:{
@@ -151,43 +142,54 @@ module.exports = function (grunt) {
 
     //File reference updater
     grunt.registerMultiTask('referUpdate', 'Update references.',function(){
+        this.requires('fileRegex');
+        if(!grunt.option("path_ref_dict"))
+        {
+            grunt.log.error("Error: Please run fileRegex before this task.");
+        }
+        if(this.errorCount){
+            return false;
+        }
 
         var re = grunt.option("path_ref_dict")[0];
-        
-        grunt.log.writeln(re.test("/images/logo.png")+ ' and '+re.test("nope.png"));
+        var path_dict = grunt.option("path_ref_dict")[1];
+
+        function getNewPath(match, p1, p2){
+            var new_dir = path_dict[match];
+            var new_path = new_dir + p2;
+            grunt.log.writeln('Match found: "' + match + '".\nReplaced with: "' + new_path + '".');
+            return new_path;
+        }
+
+        this.files.forEach(function(file) {
+
+            var srcs = file.src.filter(function(filepath) {
+                // Remove nonexistent files (it's up to you to filter or warn here).
+                if (!grunt.file.exists(filepath)) {
+                    grunt.log.warn('Source file "' + filepath + '" not found.');
+                    return false;
+                } else if (!grunt.file.isFile(filepath)){
+                    grunt.log.warn('Source file "' + filepath + '" is not a file.');
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+
+            srcs.forEach(function(filepath){
+                var old_file = grunt.file.read(filepath);
+                var new_file = old_file.replace(re, getNewPath);
+                if (new_file != old_file){
+                    grunt.file.write(file.dest, new_file);
+                    grunt.log.ok('File "' + file.dest + '" updated.');
+                }
+                else{
+                    grunt.verbose.writeln('File "' + filepath + '" had no replacements.');
+                }
+            });
+        });
 
 
-
-        // this.files.forEach(function(file) {
-
-        //     var srcs = file.src.filter(function(filepath) {
-        //         // Remove nonexistent files (it's up to you to filter or warn here).
-        //         if (!grunt.file.exists(filepath)) {
-        //             grunt.log.warn('Source file "' + filepath + '" not found.');
-        //             return false;
-        //         } else if (!grunt.file.isFile(filepath)){
-        //             grunt.log.warn('Source file "' + filepath + '" is not a file.');
-        //             return false;
-        //         } else {
-        //             return true;
-        //         }
-        //     });
-
-        //     var old_regex = new RegExp(this.options().old_regex, 'g');
-        //     var new_regex = this.options().new_regex;
-
-        //     srcs.forEach(function(filepath){
-        //         var old_file = grunt.file.read(filepath);
-        //         var new_file = old_file.replace(old_regex, new_regex);
-        //         if (new_file != old_file){
-        //             //grunt.file.write(filepath.dest, contents);
-        //             grunt.log.writeln('File "' + file.dest + '" updated.');
-        //         }
-        //         else{
-        //             grunt.log.writeln('File "' + filepath + '" had no replacements.');
-        //         }
-        //     });
-        // });
     });//End file reference updater
 
     // Default task(s).
