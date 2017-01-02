@@ -5,12 +5,12 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         imagemin: {
+            options: {
+                optimizationLevel: 4,
+                svgoPlugins: [{ removeViewBox: false },
+                            { removeUselessStrokeAndFill: false }],
+            },
             images: {
-                options: {
-                    optimizationLevel: 4,
-                    svgoPlugins: [{ removeViewBox: false },
-                                { removeUselessStrokeAndFill: false }],
-                },
                 files: [
                     {
                         expand: true,
