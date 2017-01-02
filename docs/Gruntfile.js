@@ -5,34 +5,38 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         imagemin: {
-            options: {
-                optimizationLevel: 4,
-                svgoPlugins: [{ removeViewBox: false },
-                              { removeUselessStrokeAndFill: false }]
+            images: {
+                options: {
+                    optimizationLevel: 4,
+                    svgoPlugins: [{ removeViewBox: false },
+                                { removeUselessStrokeAndFill: false }],
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'images/',
+                        src: ['**/*.{png,jpg,gif,svg}', '!compressed/**'],
+                        dest: 'images/compressed/'
+                    },
+                ],
             },
-            files: {
-                expand: true,
-                cwd: 'images/',
-                src: ['**/*.{png,jpg,gif,svg}', '!compressed/**'],
-                dest: 'images/compressed/'
-            }
         },
 
         // copy: {
         //     imagepaths: {
+        //         options: {
+        //             process: function (content, srcpath) {
+        //                 return content.replace(/(\/images\/)((?!compressed\/).+?\.(?:png|jpg|gif|svg))/g, '$1compressed/$2');
+        //             }
+        //         },
         //         files: {
         //             expand: true,
         //             cwd: '',
         //             src: ['**/*.{md,html,css,scss}','!{_site,node_modules,.sass_cache}/**'],
         //             dest: ''
-        //         },
-        //         options: {
-        //             process: function (content, srcpath) {
-        //                 return content.replace(/(\/images\/)((?!compressed\/).+?\.(?:png|jpg|gif|svg))/g, '$1compressed/$2');
-        //             },
-        //         },
-        //     },
-        // },
+        //         }
+        //     }
+        // }
 
         // watch: {
         //     newImages:{
@@ -54,5 +58,5 @@ module.exports = function (grunt) {
 
     // Default task(s).
     grunt.registerTask('default');
-    grunt.registerTask('test123', ['imagemin']);
+    grunt.registerTask('test123', ['copy:imagepaths']);
 };
