@@ -85,8 +85,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-copy');
 
-    //Generate regex from filenames given a glob path
+   
     grunt.registerMultiTask('referRegex', 'Update references.',function(){
+        //Generates a dictionary of references if the destination reference exists
+        //Passes information on to another task to replace references in whatever files you want
         var options = this.options({
             prefix: "/",
         });
@@ -95,8 +97,6 @@ module.exports = function (grunt) {
         var regex_dict = {};
         var path_dict = {};
         this.files.forEach(function(file) {
-            
-            // grunt.log.writeln(JSON.stringify(file));
 
             srcpath = file.src[0];
 
@@ -106,8 +106,7 @@ module.exports = function (grunt) {
             }
             var topdir = options.prefix + (file.orig.cwd || '');
             var destdir = options.prefix + (file.orig.dest || '');
-            // grunt.log.writeln("adding topdir: " + topdir);
-            // grunt.log.writeln("adding destdir: " + destdir);
+
             //Check if file exists in destination
             if(grunt.file.isFile(file.dest)){
                 //Add file path that changes to the current directory that doesnt change
@@ -116,8 +115,7 @@ module.exports = function (grunt) {
                     regex_dict[topdir] = '(' + topdir + ')(';
                 }
                 regex_dict[topdir] += srcpath.replace(file.orig.cwd,'') + "|";
-                srcpath = options.prefix + srcpath;
-                path_dict[srcpath] = destdir;
+                path_dict[options.prefix + srcpath] = destdir;
             }
             else{
                 grunt.log.writeln('File NOT found: "' + (file.dest) + '".');
@@ -130,25 +128,20 @@ module.exports = function (grunt) {
             }
         }
         preregex = preregex.slice(0,-1) + ')';
-        //var postregex = preregex.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
-        //grunt.log.writeln("file pre: " + preregex);
-        //grunt.log.writeln("file post: " + postregex);
         var re = new RegExp(preregex, 'g');
-        // for(key in path_dict){
-        //     grunt.log.writeln(key + "\t maps to: \t" + path_dict[key]);
-        // }
-        grunt.option('path_ref_dict', [re, path_dict]);
+        grunt.option('path_ref_dict', [re, path_dict]); //Save regex and path_dict for the updater task
     });
 
     //File reference updater
     grunt.registerMultiTask('referUpdate', 'Update references.',function(){
         this.requires('referRegex');
-
+        
         var re = grunt.option("path_ref_dict")[0];
         var path_dict = grunt.option("path_ref_dict")[1];
         var num_changes = 0;
         var tot_changes = 0;
         var num_files = 0;
+
         function getNewPath(match, p1, p2){
             var new_dir = path_dict[match];
             var new_path = new_dir + p2;
@@ -158,7 +151,6 @@ module.exports = function (grunt) {
         }
 
         this.files.forEach(function(file) {
-
             var srcs = file.src.filter(function(filepath) {
                 // Remove nonexistent files (it's up to you to filter or warn here).
                 if (!grunt.file.exists(filepath)) {
@@ -188,8 +180,6 @@ module.exports = function (grunt) {
             });
         });
         grunt.log.writeln('(' + tot_changes + ') references were updated, across (' + num_files + ') files.');
-
-
     });//End file reference updater
 
     // Default task(s).
