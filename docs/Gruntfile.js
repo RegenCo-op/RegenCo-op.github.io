@@ -24,27 +24,9 @@ module.exports = function (grunt) {
             },
         },
 
-        copy: {
-            imagepaths: { //Replace all
-                files: [ 
-                    {
-                        expand: true,
-                        cwd: '',
-                        src: ['**/*.{md,html,css,scss}','!{_site,node_modules,.sass_cache}/**'],
-                        dest: ''
-                    },
-                ],
-                options: {
-                    process: function (content, srcpath) {
-                        return content.replace(/(\/images\/)((?!compressed\/).+?\.(?:png|jpg|gif|svg))/g, '$1compressed/$2');
-                    },
-                },
-            },
-        },
-
-        referRegex: {
+        referUpdate: {
             test:{
-                files: [ 
+                files: [ //Reference files to update
                     {
                         expand: true,
                         cwd: 'images/',
@@ -62,18 +44,6 @@ module.exports = function (grunt) {
                         },
                     ],
                 },
-            },
-        },
-        referUpdate: {
-            test: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: '',
-                        src: ['**/*.{md,html,css,scss}', '!{_site,node_modules,.sass_cache}/**'],
-                        dest: ''
-                    },
-                ],
             },
         },
 
@@ -96,7 +66,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
    
-    grunt.registerMultiTask('referRegex', 'Update references.',function(){
+    grunt.registerMultiTask('referUpdate', 'Update references.',function(){
         //Generates a dictionary of references if the destination reference exists
         //Passes information on to another task to replace references in whatever files you want
         var options = this.options({
@@ -189,56 +159,6 @@ module.exports = function (grunt) {
         });
         grunt.log.writeln('(' + tot_changes + ') references were updated, across (' + num_files + ') files.');
     });
-
-    //File reference updater
-    grunt.registerMultiTask('referUpdate', 'Update references.',function(){
-        this.requires('referRegex');
-        
-        var re = grunt.option("path_ref_dict")[0];
-        var path_dict = grunt.option("path_ref_dict")[1];
-        var num_changes = 0;
-        var tot_changes = 0;
-        var num_files = 0;
-
-        function getNewPath(match, p1, p2){
-            var new_dir = path_dict[match];
-            var new_path = new_dir + p2;
-            grunt.verbose.writeln('| Match found: "' + match + '".\n| - Replaced with: "' + new_path + '".');
-            num_changes++;
-            return new_path;
-        }
-
-        this.files.forEach(function(file) {
-            var srcs = file.src.filter(function(filepath) {
-                // Remove nonexistent files (it's up to you to filter or warn here).
-                if (!grunt.file.exists(filepath)) {
-                    grunt.log.warn('Source file "' + filepath + '" not found.');
-                    return false;
-                } else if (!grunt.file.isFile(filepath)){
-                    grunt.log.warn('Source file "' + filepath + '" is not a file.');
-                    return false;
-                } else {
-                    return true;
-                }
-            });
-
-            srcs.forEach(function(filepath){
-                var old_file = grunt.file.read(filepath);
-                var new_file = old_file.replace(re, getNewPath);
-                if (new_file != old_file){
-                    grunt.file.write(file.dest, new_file);
-                    grunt.log.ok('File "' + file.dest + '" updated with (' + num_changes + ') changes.');
-                    tot_changes += num_changes;
-                    num_files++;
-                }
-                else{
-                    grunt.verbose.ok('File "' + filepath + '" had no replacements.');
-                }
-                num_changes = 0;
-            });
-        });
-        grunt.log.writeln('(' + tot_changes + ') references were updated, across (' + num_files + ') files.');
-    });//End file reference updater
 
     // Default task(s).
     grunt.registerTask('default');
