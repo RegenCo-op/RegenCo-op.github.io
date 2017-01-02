@@ -22,21 +22,23 @@ module.exports = function (grunt) {
             },
         },
 
-        // copy: {
-        //     imagepaths: {
-        //         options: {
-        //             process: function (content, srcpath) {
-        //                 return content.replace(/(\/images\/)((?!compressed\/).+?\.(?:png|jpg|gif|svg))/g, '$1compressed/$2');
-        //             }
-        //         },
-        //         files: {
-        //             expand: true,
-        //             cwd: '',
-        //             src: ['**/*.{md,html,css,scss}','!{_site,node_modules,.sass_cache}/**'],
-        //             dest: ''
-        //         }
-        //     }
-        // }
+        copy: {
+            imagepaths: { //Replace all
+                files: [ 
+                    {
+                        expand: true,
+                        cwd: '',
+                        src: ['**/*.{md,html,css,scss}','!{_site,node_modules,.sass_cache}/**'],
+                        dest: ''
+                    },
+                ],
+                options: {
+                    process: function (content, srcpath) {
+                        return content.replace(/(\/images\/)((?!compressed\/).+?\.(?:png|jpg|gif|svg))/g, '$1compressed/$2');
+                    },
+                },
+            },
+        },
 
         // watch: {
         //     newImages:{
