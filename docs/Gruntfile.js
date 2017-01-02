@@ -42,7 +42,7 @@ module.exports = function (grunt) {
             },
         },
 
-        fileRegex: {
+        referRegex: {
             test:{
                 files: [ 
                     {
@@ -55,12 +55,12 @@ module.exports = function (grunt) {
             },
         },
         referUpdate: {
-            test:{
-                 files: [ 
+            test: {
+                files: [
                     {
                         expand: true,
                         cwd: '',
-                        src: ['**/*.{md,html,css,scss}','!{_site,node_modules,.sass_cache}/**'],
+                        src: ['**/*.{md,html,css,scss}', '!{_site,node_modules,.sass_cache}/**'],
                         dest: ''
                     },
                 ],
@@ -86,7 +86,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     //Generate regex from filenames given a glob path
-    grunt.registerMultiTask('fileRegex', 'Update references.',function(){
+    grunt.registerMultiTask('referRegex', 'Update references.',function(){
         var options = this.options({
             prefix: "/",
         });
@@ -142,22 +142,18 @@ module.exports = function (grunt) {
 
     //File reference updater
     grunt.registerMultiTask('referUpdate', 'Update references.',function(){
-        this.requires('fileRegex');
-        if(!grunt.option("path_ref_dict"))
-        {
-            grunt.log.error("Error: Please run fileRegex before this task.");
-        }
-        if(this.errorCount){
-            return false;
-        }
+        this.requires('referRegex');
 
         var re = grunt.option("path_ref_dict")[0];
         var path_dict = grunt.option("path_ref_dict")[1];
-
+        var num_changes = 0;
+        var tot_changes = 0;
+        var num_files = 0;
         function getNewPath(match, p1, p2){
             var new_dir = path_dict[match];
             var new_path = new_dir + p2;
-            grunt.log.writeln('Match found: "' + match + '".\nReplaced with: "' + new_path + '".');
+            grunt.verbose.writeln('| Match found: "' + match + '".\n| - Replaced with: "' + new_path + '".');
+            num_changes++;
             return new_path;
         }
 
@@ -181,13 +177,17 @@ module.exports = function (grunt) {
                 var new_file = old_file.replace(re, getNewPath);
                 if (new_file != old_file){
                     grunt.file.write(file.dest, new_file);
-                    grunt.log.ok('File "' + file.dest + '" updated.');
+                    grunt.log.ok('File "' + file.dest + '" updated with (' + num_changes + ') changes.');
+                    tot_changes += num_changes;
+                    num_files++;
                 }
                 else{
-                    grunt.verbose.writeln('File "' + filepath + '" had no replacements.');
+                    grunt.verbose.ok('File "' + filepath + '" had no replacements.');
                 }
+                num_changes = 0;
             });
         });
+        grunt.log.writeln('(' + tot_changes + ') references were updated, across (' + num_files + ') files.');
 
 
     });//End file reference updater
