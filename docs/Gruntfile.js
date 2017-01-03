@@ -78,6 +78,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-newer');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-imagemin');    
+    grunt.loadNpmTasks('grunt-referupdate');
 
     // Default task(s).
     grunt.registerTask('default');
