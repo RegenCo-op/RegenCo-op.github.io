@@ -15,6 +15,33 @@ logo: /images/logo.png
 gems:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-titles-from-headings
 
 exclude:
   - _articles/ArticleTemplate.md
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "article"
+      title: ""
+  -
+    scope:
+      path: ""
+      type: 'articles'
+    values:
+      comments: true
+      layout: "article"
+      title: ""
+
+  -
+    scope:
+      path: ""
+      type: 'info'
+    values:
+      comments: false
+      layout: "article"
+      title: ""

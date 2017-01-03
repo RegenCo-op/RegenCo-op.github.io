@@ -1,8 +1,6 @@
 ---
-layout: article
 title: Hierarchical Organization	
 permalink: /articles/Hierarchical-Organization
-comments: true
 ---
 ![diagram of hierarchical organization](/images/compressed/Hierarchical-Organization/HierarchicalOrganization.png)	
 The above is a diagram graphically demonstrating hierarchical organization. The first thing to note is the pyramidal shape. The pyramid is ubiquitous to civilization. Many have thought that the pyramid has magical power, that it concentrates energy in some way or can shield things from harm or decay. The symbology of the pyramid represents the hierarchical organization of society and so there is no magic, for those at the top of the hierarchy  do acquire these powers.  The ancient pyramids were built by first leveling the spot the pyramid will stand. This is representative of civilizations subjugation of nature. Then the first course of stone blocks is laid and another slightly smaller is laid upon that and so on. This is representative of the class structure of civilization where each class is supported by the one below. The very top of the pyramid is always given prominence either as the alter of sacrifice or as a shining beacon. This represents how the leader is to be followed to the point of self sacrifice. Patriarchy and hierarchy are one and the same. The obelisk presents a pyramid in the form of a phallus. Yes the Washington monument is a 555 foot tall, aluminum capped, marble brick DICK!

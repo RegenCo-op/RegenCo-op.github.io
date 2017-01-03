@@ -30,14 +30,12 @@ Before you start writing the article, it is recommended that you read the [artic
    
    1. #### Fill out the top section:
       
-      1. **Ignore the first line that says layout: article**
-      2. Delete the text that says "Article Title Goes Here" and fill it in with your article's title.
-      3. Delete the text that says "Unique-Article-Permalink-Goes-Here" and replace it with a phrase that is unique.  
+      1. Delete the text that says "Article Title Goes Here" and fill it in with your article's title.
+      2. Delete the text that says "Unique-Article-Permalink-Goes-Here" and replace it with a phrase that is unique.  
         **No spaces are allowed. Only letters (a-z), numbers (0-9), and hyphens (-) are allowed**.  
         The easiest thing would be your article's title, replacing the spaces with hyphens (-). For example: using the title: `My Article Title`, one would choose a permalink: `My-Article-Title`.  
         The most important thing is that it **doesn't share a permalink with another article**.  
         **_Make a note of what you typed here, as we will use it later, as follows:_** `Your-Permalink-Here`
-      4. **Most articles should leave the _comments: true_ section alone.**
 
    2. #### Write the content:  
       Now you can start writing your article after the last line with the three hyphens (`---`).

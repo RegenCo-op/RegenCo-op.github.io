@@ -1,8 +1,6 @@
 ---
-layout: article
 title: Power Production, Distribution, and Usage Overview
 permalink: /articles/Power-Production-Distribution-and-Usage-Overview
-comments: true
 --- 
 ## To understand the need for organizations like the REGENCO-OP we must begin with what is wrong with our current methods of producing, distributing and storing energy. 
 

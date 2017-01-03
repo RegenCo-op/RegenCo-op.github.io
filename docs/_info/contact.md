@@ -1,5 +1,4 @@
 ---
-layout: article
 title: Contact Us
 permalink: /info/contact
 ---

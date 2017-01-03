@@ -1,8 +1,6 @@
 ---
-layout: article
 title: Article Formatting Guidelines
 permalink: /info/Article-Formatting-Guidelines
-comments: false
 ---
 
 ## The Basics
