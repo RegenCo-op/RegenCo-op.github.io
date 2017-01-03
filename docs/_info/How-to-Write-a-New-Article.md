@@ -65,11 +65,10 @@ Before you start writing the article, it is recommended that you read the [artic
       
       1. Make sure pictures you want to use are copyright free or are your own original work.
       2. Rename the files so that they **do not contain any spaces**.
-      3. Make sure the files are .jpeg, .png, .gif, or .svg format (you can use this [online converter](http://image.online-convert.com/convert-to-jpg) if they are not).
-      4. [Compress the files here](https://compressor.io/). Compressed images make the page load faster and improve user experience for people with a slow internet connection.
-      5. Put all the images you want to use in a folder on your desktop. Rename the folder the same as your permalink:  
+      3. Make sure the files are .jpg, .png, .gif, or .svg format (you can use this [online converter](http://image.online-convert.com/convert-to-jpg) if they are not).
+      4. Put all the images you want to use in a folder on your desktop. Rename the folder the same as your permalink:  
 `Your-Permalink-Here`
-
+   
    2. #### Insert the images into the document:  
       **Note: _Images you use here won't appear in any previews_**
       
