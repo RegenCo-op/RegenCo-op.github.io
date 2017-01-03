@@ -21,24 +21,6 @@ module.exports = function (grunt) {
             },
         },
 
-        copy: {
-            imagepaths: { //Replace all
-                files: [ 
-                    {
-                        expand: true,
-                        cwd: '',
-                        src: ['**/*.{md,html,css,scss}','!{_site,node_modules,.sass_cache}/**'],
-                        dest: ''
-                    },
-                ],
-                options: {
-                    process: function (content, srcpath) {
-                        return content.replace(/(\/images\/)((?!compressed\/).+?\.(?:png|jpg|gif|svg))/g, '$1compressed/$2');
-                    },
-                },
-            },
-        },
-
         referUpdate: {
             images:{
                 files: [ 
@@ -62,17 +44,30 @@ module.exports = function (grunt) {
             },
         },
 
-        // watch: {
-        //     newImages:{
-        //         options: {
-        //             cwd: {
-        //                 files: 'images/'
-        //             }
-        //         },
-        //         files: ['**/*.{png,jpg,gif,svg}', '!compressed/**'],
-        //         tasks: ['newer:imagemin', 'newer:copy:imagepaths']
-        //     }
-        // }
+        watch: {
+            newImages:{
+                options: {
+                    cwd: {
+                        files: 'images/'
+                    }
+                },
+                files: ['**/*.{png,jpg,gif,svg}', '!compressed/**'],
+                tasks: ['compImgs'],
+            }
+        },
+
+        refUpdateWrap: {
+            images:{
+                files: [ 
+                    {
+                        expand: true,
+                        cwd: 'images/',
+                        src: ['**/*.{png,jpg,gif,svg}', '!compressed/**'],
+                        dest: 'images/compressed/'
+                    },
+                ],
+            },
+        },
     });
 
     grunt.loadNpmTasks('grunt-newer');
@@ -82,5 +77,5 @@ module.exports = function (grunt) {
 
     // Default task(s).
     grunt.registerTask('default');
-    grunt.registerTask('test123', ['copy:imagepaths']);
+    grunt.registerTask('compImgs', ['newer:imagemin:images', 'referUpdate:images']);
 };
