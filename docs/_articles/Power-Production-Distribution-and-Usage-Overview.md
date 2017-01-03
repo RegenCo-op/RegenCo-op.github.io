@@ -39,7 +39,7 @@ The main theme that ties most of these technologies together is the fact that th
     ### Solar Potential – Global Horizontal Irradiation
     {: .center}
 
-    ![Solar potential – global horizontal irradiation](/images/Power-Production-Distribution-and-Usage-Overview/SolarGIS-Solar-map-World-map-en-compressor-compressor.png)      
+    ![Solar potential – global horizontal irradiation](/images/compressed/Power-Production-Distribution-and-Usage-Overview/SolarGIS-Solar-map-World-map-en-compressor-compressor.png)      
     This is a map showing the average energy in kWh/m2 received in a day and over a year. As you can see most of the planet receives generous amounts of sunlight. Click [here](#todo) for more information.
           
     * [Unconcentrated solar thermal](#todo) systems use flat plate collectors or vacuum tube collectors without any mirrors. They can reach temperatures over 100 C but max out around 200 C. They are simple and reliable but are limited to processes that can be done around 100 C. These processes include  hot water for showering, laundry, dishes and for space heating through radiators or underfloor heating, 
