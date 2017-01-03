@@ -4,5 +4,13 @@
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{ site.github.url }}/css/main.css">
-	{% seo %}
+	<title>
+		{% assign title_len = page.title | size %}
+		{% if title_len > 0 %}
+			{{page.title}} - {{site.name}}
+		{% else %}
+			{{site.name}} - {{site.description}}
+		{% endif %}
+	</title>
+	{% seo title=false %}
 </head>
