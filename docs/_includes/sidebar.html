@@ -34,9 +34,11 @@
                         {% assign article_url = permalink | prepend:"/articles/" %}
                         {% assign p = site.articles | where:"url", article_url | first %}
                         <a href="{{ p.url }}" class="{% if article_url == page.url %}current{% endif %}"><li >{{ p.title }}</li></a>
+                    {% else %}
+                        <a><li ><em>Coming Soon!</em></li></a>
                     {% endfor %}
                 </ul>
-                {% endfor %}
+                {% endfor %}                
             </div>           
         </div>
     </div>
