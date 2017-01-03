@@ -55,19 +55,6 @@ module.exports = function (grunt) {
                 tasks: ['compImgs'],
             }
         },
-
-        refUpdateWrap: {
-            images:{
-                files: [ 
-                    {
-                        expand: true,
-                        cwd: 'images/',
-                        src: ['**/*.{png,jpg,gif,svg}', '!compressed/**'],
-                        dest: 'images/compressed/'
-                    },
-                ],
-            },
-        },
     });
 
     grunt.loadNpmTasks('grunt-newer');
