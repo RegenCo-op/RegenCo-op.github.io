@@ -292,6 +292,11 @@ article {
 }
 
 /***** Title banners *****/
+h1.title-banner{
+    font-size: 2em;
+    font-weight: 900;
+    letter-spacing: initial;
+}
 .title-banner{
     position: relative;
     z-index: 1;
@@ -300,7 +305,10 @@ article {
     color: $light-gold;
     background: $dark-teal;
     padding: 3px 5px;
+    margin: 0;
     @include box-shadow(0 2px 7px 0px black);
+    font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif;
+    letter-spacing: 2px;
     &:before{
         /* Bottom left triangle */
         content: "";
@@ -390,7 +398,18 @@ article {
                 width: 100%;
                 height: 56px;
                 display: table;
+                @include transition(all .1s ease-out);
                 background:$dark-green;
+                background: linear-gradient(to bottom, $dark-green 0%, lighten($dark-green, 4%) 30%, $dark-green 85%, lighten($dark-green, 2%) 100%);
+                &:active{
+                    background:$dark-green;
+                    background: linear-gradient(to bottom, lighten($dark-green, 6%) 0%, darken($dark-green,2%) 30%, lighten($dark-green, 2%) 70%, $dark-green 100%);
+                }
+                &:hover{
+                    //font-weight:bold;
+                    font-size: 1.2em;
+                    letter-spacing: 1px;
+                }
                 span{
                     color: $light-gold;
                     display: table-cell;
@@ -425,7 +444,7 @@ article {
                 li {
                     position: relative;
                     padding: 7px 5px;
-                    
+                    max-height: 100%;
                     &:hover{
                         background: darken($light-gold, $amount: 7%);
                     }                
@@ -436,8 +455,20 @@ article {
         input + .links{
             a {
                 display: block;
+                &.current li{                                    
+                    border-top-width: 0;
+                    border-bottom-width: 0;
+                }
+                li{
+                    @include transition(all 0.25s cubic-bezier(.08,.82,.17,1));
+                    max-height: 0;                    
+                    padding: 0 5px;
+                    overflow: hidden;
+                    border-top-width: 0;
+                    border-bottom-width: 0;
+                }
                 &:first-child li{
-                    border-top: none;
+                    border-top: none !important;
                     &:after{
                         content: "";
                         position: absolute;
@@ -449,14 +480,25 @@ article {
                     }
                 }
                 &:last-child li{
-                    border-bottom: none;
+                    border-bottom: none !important;
                     @include box-shadow(0 -6px 4px -6px black inset);
                 }
             }
-            display: none;
         }
         input:checked + .links {
-            display: block;
+            overflow:visible;
+            a{
+                &.current li{
+                    border-top: 2px dotted $main-gold;
+                    border-bottom: 2px dotted $main-gold; 
+                }
+                li{
+                    @include transition(all 1s cubic-bezier(.6,.66,.4,1.99));
+                    max-height:150px;                    
+                    padding: 7px 5px;
+                }
+
+            }
         }
     }
 }
@@ -573,7 +615,7 @@ article {
                 &:first-child{
                     @include box-shadow(none);
                     a{
-                        margin: initial;
+                        margin: 0;
                     }
                 }
                 a{
@@ -596,18 +638,15 @@ article {
                     }
                 }
             }
-
             .current{
                 position: relative;
                 &:before{
                     bottom:50%;
                     border-top: 1em solid transparent;
-                    border-right: 30px solid $selected-color;
                 }
                 &:after{
                     top:50%;
                     border-bottom: 1em solid transparent;
-                    border-right: 30px solid $selected-color;
                 }
                 &:after, &:before{
                     content:'';
@@ -616,11 +655,36 @@ article {
                     width:0;
                     height:0;
                     z-index: 1;
+                    border-right: 30px solid $selected-color;
                 }
                 &:hover{
                     &:after, &:before{
                         border-right-color: darken($color: $selected-color, $amount: 7%);
                     }
+                }
+            }
+            input + .links .current{
+                &:before, &:after{
+                    @include transition(all 0.2s cubic-bezier(.8, 0.82, 0.17, 1));
+                }
+                &:before{
+                    border-top-width: 0;
+                }
+                &:after{
+                    border-bottom-width: 0;
+                }
+                
+            }
+            input:checked + .links .current{
+                &:before, &:after{
+                    @include transition(all 1s cubic-bezier(0.15, 0.66, 0.4, 1.29));
+                }
+                
+                &:before{
+                    border-top-width: 1em;
+                }
+                &:after{
+                    border-bottom-width: 1em;
                 }
             }
         }
