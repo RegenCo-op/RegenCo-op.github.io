@@ -400,13 +400,14 @@ h1.title-banner{
                 display: table;
                 @include transition(all .1s ease-out);
                 background:$dark-green;
+                background: -webkit-linear-gradient(top, $dark-green 0%, lighten($dark-green, 4%) 30%, $dark-green 85%, lighten($dark-green, 2%) 100%);
                 background: linear-gradient(to bottom, $dark-green 0%, lighten($dark-green, 4%) 30%, $dark-green 85%, lighten($dark-green, 2%) 100%);
                 &:active{
                     background:$dark-green;
+                    background: -webkit-linear-gradient(top, lighten($dark-green, 6%) 0%, darken($dark-green,2%) 30%, lighten($dark-green, 2%) 70%, $dark-green 100%);
                     background: linear-gradient(to bottom, lighten($dark-green, 6%) 0%, darken($dark-green,2%) 30%, lighten($dark-green, 2%) 70%, $dark-green 100%);
                 }
                 &:hover{
-                    //font-weight:bold;
                     font-size: 1.2em;
                     letter-spacing: 1px;
                 }
@@ -446,6 +447,7 @@ h1.title-banner{
                     padding: 7px 5px;
                     max-height: 100%;
                     &:hover{
+                        @include transition(background .1s ease-out !important);
                         background: darken($light-gold, $amount: 7%);
                     }                
                 }
