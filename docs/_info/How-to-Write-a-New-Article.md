@@ -17,23 +17,23 @@ Before you start writing the article, it is recommended that you read the [artic
 1. ### Download the template article:
    
    - Right click on the following link and click save link as... to save it to your desktop: [ArticleTemplate.md](https://github.com/RegenCo-op/RegenCo-op/raw/master/docs/_articles/ArticleTemplate.md)
-   ![](/images/How-to-Write-a-New-Article/1-save-link-as.gif)
+   ![](/images/compressed/How-to-Write-a-New-Article/1-save-link-as.gif)
 
 2. ### Open the file from step 1 in your favorite Markdown editor:  
    **Note:** A good online editor is [StackEdit](https://stackedit.io/editor), and from now on we will assume you are using that editor for the purposes of this guide:
    
    
    1. Using Stack Edit, for example, click on the "**#**" in the upper left corner. Click on "import from disk".  
-      ![](/images/How-to-Write-a-New-Article/2-1-import.gif)
+      ![](/images/compressed/How-to-Write-a-New-Article/2-1-import.gif)
    2. Click "browse" and open the file from step 1.
-      ![](/images/How-to-Write-a-New-Article/2-2-browse.gif)
+      ![](/images/compressed/How-to-Write-a-New-Article/2-2-browse.gif)
 
 3. ### Write the article:  
    **Note:** Do not worry about pictures for now.
    
    1. #### Fill out the top section:
       
-      ![](/images/How-to-Write-a-New-Article/3-1-title.gif)
+      ![](/images/compressed/How-to-Write-a-New-Article/3-1-title.gif)
       1. Delete the text that says "Article Title Goes Here" and fill it in with your article's title.
       2. Delete the text that says "Unique-Article-Permalink-Goes-Here" and replace it with a phrase that is unique.  
         **No spaces are allowed. Only letters (a-z), numbers (0-9), and hyphens (-) are allowed**.  
@@ -45,21 +45,21 @@ Before you start writing the article, it is recommended that you read the [artic
    2. #### Write the content:  
       Now you can start writing your article after the last line with the three hyphens (`---`).
       
-      ![](/images/How-to-Write-a-New-Article/3-2-write.gif)
+      ![](/images/compressed/How-to-Write-a-New-Article/3-2-write.gif)
       - Make a note of where you want to put a picture, if any, but do not worry about how to insert it for now.
       - Keep in mind the [article formatting guidelines](/info/Article-Formatting-Guidelines).
       - Also remember to refer to the [Kramdown reference guide](https://kramdown.gettalong.org/quickref.html) if the text isn't formatting the way you want it to.
 
    3. #### Rename the article:
       
-      ![](/images/How-to-Write-a-New-Article/3-3-rename.gif)
+      ![](/images/compressed/How-to-Write-a-New-Article/3-3-rename.gif)
       1. Using Stack Edit, click on the text in the upper right that says `ArticleTemplate`.
       2. Using the same permalink text you used in step 3.1.3, rename the article. It will look like this:  
       `Your-Permalink-Here`
 
    4. #### Save the article:
       
-      ![](/images/How-to-Write-a-New-Article/3-4-export.gif)
+      ![](/images/compressed/How-to-Write-a-New-Article/3-4-export.gif)
       1. Using Stack Edit, for example, click on the "**#**" in the upper left corner.
       2. Click the "**Export to disk**" button.
       3. Click the "As markdown" button.
@@ -71,12 +71,12 @@ Before you start writing the article, it is recommended that you read the [artic
       
       1. Make sure pictures you want to use are copyright free or are your own original work.
       2. Rename the files so that they **do not contain any spaces**.
-         ![](/images/How-to-Write-a-New-Article/4-1-rename.gif)
+         ![](/images/compressed/How-to-Write-a-New-Article/4-1-rename.gif)
       3. Make sure the files are .jpg, .png, .gif, or .svg format (you can use this [online image filetype converter](http://image.online-convert.com/convert-to-jpg) if they are not).
-         ![](/images/How-to-Write-a-New-Article/4-2-filetype.gif)
+         ![](/images/compressed/How-to-Write-a-New-Article/4-2-filetype.gif)
       4. Put all the images you want to use in a folder on your desktop. Rename the folder the same as your permalink:  
          `Your-Permalink-Here`  
-         ![](/images/How-to-Write-a-New-Article/4-3-folder.gif)
+         ![](/images/compressed/How-to-Write-a-New-Article/4-3-folder.gif)
    
    2. #### Insert the images into the document:  
       **Note: _Images you use here won't appear in any previews_**
@@ -86,7 +86,7 @@ Before you start writing the article, it is recommended that you read the [artic
         **Note:** Make sure to replace `Your-Permalink-Here` with the same permalink text you used in step 3.1.3.  
         **Note:** Make sure to replace `Your-Image-Here.ext` with the image filename, and **don't forget to use the right filename extension**.
 
-        ![](/images/How-to-Write-a-New-Article/4-4-insert.gif)
+        ![](/images/compressed/How-to-Write-a-New-Article/4-4-insert.gif)
 
 ***
 
@@ -98,7 +98,7 @@ Before you start writing the article, it is recommended that you read the [artic
 1. Either [sign into github](https://github.com/login) or [make a new account](https://github.com/join).
 2. Go to the [RegenCo-op repository on GitHub](https://github.com/RegenCo-op/RegenCo-op).
 3. In the upper right corner, you will see a button called "Fork". Click on it to fork the repository to your account.  
-   ![](/images/How-to-Write-a-New-Article/fork.png)
+   ![](/images/compressed/How-to-Write-a-New-Article/fork.png)
 4. After a few seconds, you should now have a personal copy of all the files on the website.
 5. It would be wise to make a bookmark of your forked repository, as that is what you will use to submit articles. If you do not, you can find it later at:  
    `https://github.com/YOUR-GITHUB-USERNAME-HERE/RegenCo-op`
@@ -130,7 +130,7 @@ By now you should have your article written and named: `Your-Permalink-Here.md` 
    3. Give your pull request the title "**Update**" and click "**Create pull request**".
    4. Now you can click the "**Merge pull request**" button to bring your repository up to date with the master repository.
    
-   ![](/images/How-to-Write-a-New-Article/update-fork.gif)
+   ![](/images/compressed/How-to-Write-a-New-Article/update-fork.gif)
 
 2. ### Making a topic branch:
    
@@ -146,7 +146,7 @@ By now you should have your article written and named: `Your-Permalink-Here.md` 
    3. In the input box, type in the permalink text: `Your-Permalink-Here`
    4. Click the "Create branch:..." button.
    5. The button should now say "Branch: **Your-Permalink-Here**".
-   ![](/images/How-to-Write-a-New-Article/topic-branch.gif)
+   ![](/images/compressed/How-to-Write-a-New-Article/topic-branch.gif)
 
 3. ### Making and Pushing Changes:
    
@@ -163,7 +163,7 @@ By now you should have your article written and named: `Your-Permalink-Here.md` 
          
          <noscript markdown="1">
          **_Note:_** Make sure your branch is on the one you created earlier. There should be a button that says "Branch: **Your-Permalink-Here**". If it does not say that, click it and change it.  
-         ![](/images/How-to-Write-a-New-Article/branch-verification.jpg)
+         ![](/images/compressed/How-to-Write-a-New-Article/branch-verification.jpg)
          
          1. Open the "**docs**" folder.
          2. Open the "**_data**" folder.
@@ -187,7 +187,7 @@ By now you should have your article written and named: `Your-Permalink-Here.md` 
          
          <noscript markdown="1">
          **_Note:_** Make sure your branch is on the one you created earlier. There should be a button that says "Branch: **Your-Permalink-Here**". If it does not say that, click it and change it.  
-         ![](/images/How-to-Write-a-New-Article/branch-verification.jpg)
+         ![](/images/compressed/How-to-Write-a-New-Article/branch-verification.jpg)
          
          1. Open the "**docs**" folder.
          2. Open the "**images**" folder.
@@ -196,9 +196,9 @@ By now you should have your article written and named: `Your-Permalink-Here.md` 
          </noscript>
          
 
-      2. ![](/images/How-to-Write-a-New-Article/dragdrop.gif)  
-         Drag and drop **_the image folder itself_** to the grey box that says "**Drag additional files here to add them to the repository**"  
-         **_Note:_** It is important to **_drag and drop the image folder itself_**, rather than click the "**choose your files**" link; This is so the folder structure gets uploaded to github.
+      2. Drag and drop **_the image folder itself_** to the grey box that says "**Drag additional files here to add them to the repository**"  
+         **_Note:_** It is important to **_drag and drop the image folder itself_**, rather than click the "**choose your files**" link; This is so the folder structure gets uploaded to github.  
+         ![](/images/compressed/How-to-Write-a-New-Article/dragdrop.gif)
       3. The image's filenames should appear under the grey box.
       4. Scroll down and click the "**Commit changes**" button at the bottom.
 
@@ -208,7 +208,7 @@ By now you should have your article written and named: `Your-Permalink-Here.md` 
          
          <noscript markdown="1">
          **_Note:_** Make sure your branch is on the one you created earlier. There should be a button that says "Branch: **Your-Permalink-Here**". If it does not say that, click it and change it.  
-         ![](/images/How-to-Write-a-New-Article/branch-verification.jpg)
+         ![](/images/compressed/How-to-Write-a-New-Article/branch-verification.jpg)
          
          1. Open the "**docs**" folder.
          2. Open the "**_articles**" folder.
