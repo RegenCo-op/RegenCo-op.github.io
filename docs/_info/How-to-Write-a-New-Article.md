@@ -58,11 +58,13 @@ Before you start writing the article, it is recommended that you read the [artic
       `Your-Permalink-Here`
 
    4. #### Save the article:
+      **Note:** If you want to use images, [skip to the Using images step](#using-images), then come back here.  
       
       ![](/images/compressed/How-to-Write-a-New-Article/3-4-export.gif)
       1. Using Stack Edit, for example, click on the "**#**" in the upper left corner.
       2. Click the "**Export to disk**" button.
       3. Click the "As markdown" button.
+      4. Save the file on your desktop.
 
 4. ### Using images:  
    **Note:** [Skip to the next step](#make-a-new-fork) if you _do not_ want to use any pictures.
@@ -82,6 +84,7 @@ Before you start writing the article, it is recommended that you read the [artic
       **Note: _Images you use here won't appear in any previews_**
       
       - Using the markdown format, insert the images into the article wherever you want. The format you use will look like this: `![image description](/images/Your-Permalink-Here/Your-Image-Here.ext)`  
+      - [Save the article](#save-the-article) when finished.
         
         **Note:** Make sure to replace `Your-Permalink-Here` with the same permalink text you used in step 3.1.3.  
         **Note:** Make sure to replace `Your-Image-Here.ext` with the image filename, and **don't forget to use the right filename extension**.
