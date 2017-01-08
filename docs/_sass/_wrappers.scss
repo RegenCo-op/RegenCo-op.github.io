@@ -1,0 +1,103 @@
+/***** Body *****/
+body{
+    margin: 0 auto;
+    background: $main-brown;
+    font-size: 100%;
+    font-family: sans-serif;
+}
+
+#wrapper {
+    position: relative;
+    top: $menubar-height; /* Offset for menubar at top*/
+    width: 100%;
+    overflow: hidden;
+    
+    @include tablet-landscape{
+        top:0;
+    }
+}
+
+
+/* Clearfix after every .grid */
+.grid {
+  display: block;
+  clear: both;
+  *zoom: 1;
+  &:before, &:after{
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after{
+    clear: both;
+  }
+  @include phone-landscape{
+    margin: 0 auto;
+    max-width: 95%;
+  }
+  @include desktop-small{
+    
+  }
+  @include desktop-large{
+    max-width: 1024px + 250px;
+  }
+}
+
+//Columns
+.content-wrapper{
+    @include tablet-landscape{
+        float: left;
+        padding: 5px 5px 0 5px;
+        
+        &.left{
+            width: 3/4 * 100%;
+        }
+        &.right{
+            width: 1/4 * 100%;
+        }
+    }
+    @include desktop-small{
+        &.left{
+            width: 3/4 * 100%;
+        }
+        &.right{
+            width: 1/4 * 100%;
+        }
+    }
+}
+
+/***** Title banners *****/
+.title-banner{
+    position: relative;
+    z-index: 1;
+    background: $dark-teal;
+    padding: 3px 5px;
+    margin: 0;
+    @include box-shadow(0 2px 7px 0px black);
+    &:before{
+        /* Bottom left triangle */
+        content: "";
+        position: absolute;
+        left:0;
+        bottom: -30px;
+        height:0;
+        width:0;
+        border-top: 30px solid $dark-green;
+        border-left: 10px solid transparent;
+    }
+    &:after{
+        /* Bottom right triangle */
+        content: "";
+        position: absolute;
+        right:0;
+        bottom: -30px;
+        height:0;
+        width:0;
+        border-top: 30px solid $dark-green;
+        border-right: 10px solid transparent;
+    }
+}
+.title-banner-content{
+    position: relative;
+    padding: 0 10px;
+}

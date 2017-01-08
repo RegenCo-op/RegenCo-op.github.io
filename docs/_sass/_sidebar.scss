@@ -62,7 +62,10 @@
         $category-color: $dark-green;
         position: relative;
         @include box-shadow(0 4px 8px -1px black);
-
+        @include tablet-landscape{
+            display: block;
+            position: static;
+        }
         label{
             position: relative;
             min-height: 56px;
@@ -109,18 +112,53 @@
             background: $light-gold;
             &:first-child{                
                 @include box-shadow(0 7px 4px -6px black inset, 0 -6px 4px -6px black inset);
+                @include tablet-landscape{
+                    @include box-shadow(none);
+                }
                 a{
                     margin: 4px 0;
+                    @include tablet-landscape{ 
+                        margin: 0;
+                    }
                 }
             }
             a {
                 display: inline-block;
-                &.current li{                    
-                    border-top: 2px dotted $main-gold;
-                    border-bottom: 2px dotted $main-gold;
-                    background: $selected-color;
-                    &:hover{
-                        background: darken($selected-color, $amount: 7%);
+                position: relative;
+                &.current {
+                    li{                    
+                        border-top: 2px dotted $main-gold;
+                        border-bottom: 2px dotted $main-gold;
+                        background: $selected-color;
+                        &:hover{
+                            background: darken($selected-color, $amount: 7%);
+                        }
+                    }
+                    @include tablet-landscape{
+                        //Make a pointer
+                        &:before{
+                            bottom:50%;
+                            border-top: 0 solid transparent;
+                        }
+                        &:after{
+                            top:50%;
+                            border-bottom: 0 solid transparent;
+                        }
+                        &:after, &:before{
+                            content:'';
+                            position: absolute;
+                            left:-30px;
+                            width:0;
+                            height:0;
+                            z-index: 1;
+                            border-right: 30px solid $selected-color;
+                            @include transition(all 0.2s cubic-bezier(.8, 0.82, 0.17, 1));
+                        }
+                        &:hover{
+                            &:after, &:before{
+                                border-right-color: darken($color: $selected-color, $amount: 7%);
+                            }
+                        }
                     }
                 }
                 li {
@@ -131,6 +169,25 @@
                         @include transition(background .1s ease-out !important);
                         background: darken($light-gold, $amount: 7%);
                     }                
+                }
+                @include tablet-landscape{
+                    display: block;
+                    &:first-child li{
+                        border-top: none;
+                        &:after{
+                            content: "";
+                            position: absolute;
+                            top:0;
+                            left:-5px;
+                            width: 105%;
+                            height: 100%;
+                            @include box-shadow(0 7px 4px -6px black inset);
+                        }
+                    }
+                    &:last-child li{
+                        border-bottom: none;
+                        @include box-shadow(0 -6px 4px -6px black inset);
+                    }
                 }
             }
 
@@ -181,6 +238,19 @@
                     padding: 7px 5px;
                 }
 
+            }
+            @include tablet-landscape{
+                .current{
+                    &:before, &:after{
+                        @include transition(all 1s cubic-bezier(0.15, 0.66, 0.4, 1.29));
+                    }                
+                    &:before{
+                        border-top-width: 1em;
+                    }
+                    &:after{
+                        border-bottom-width: 1em;
+                    }
+                }
             }
         }
     }
