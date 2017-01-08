@@ -1,0 +1,187 @@
+/***** Sidebar *****/
+.sidebar {
+    position: relative;
+    z-index: 2;
+    @include tablet-landscape{
+        z-index: initial;
+    }
+    .category-wrapper{
+        position: fixed;
+        top:56px;
+        bottom: 0;
+        left:0;
+        right:0;
+        overflow: auto;
+        background-color: hsla(0, 0, 0, 0.3);
+        @include tablet-landscape{
+            background: initial;
+            display: block !important;
+            position: static;
+            overflow: initial;
+        }
+    }
+
+    .title-banner{
+        display: none;
+        @include tablet-landscape{
+            display: block;
+        }
+    }
+    .title-banner-content{
+        @include tablet-landscape{
+            .category:first-of-type>div{
+                @include box-shadow(0 7px 4px -6px black inset);
+            }
+        }
+    }
+
+    label{
+        cursor:pointer;
+        input, &+input {
+            display: none;
+        }
+    }
+
+    #menu-toggle{
+        position:fixed;
+        top:0;
+        right:0;
+        height:56px;
+        width:56px;
+        &+input+.category-wrapper {
+            display: none;
+        }
+        &+input:checked + .category-wrapper {
+            display: block;
+        }
+        @include tablet-landscape{
+            display: none;
+        }
+    }
+    .categories{
+        $category-color: $dark-green;
+        position: relative;
+        @include box-shadow(0 4px 8px -1px black);
+
+        label{
+            position: relative;
+            min-height: 56px;
+            width:100%;
+            text-align: center;
+
+            &:not(:last-of-type) div{
+                border-bottom: 1px dashed $main-gold;
+            }
+            div{
+                position: relative;
+                padding: 3px;
+                
+                width: 100%;
+                height: 56px;
+                display: table;
+                @include transition(all .1s ease-out);
+                background:$dark-green;
+                background: -webkit-linear-gradient(top, $dark-green 0%, lighten($dark-green, 4%) 30%, $dark-green 85%, lighten($dark-green, 2%) 100%);
+                background: linear-gradient(to bottom, $dark-green 0%, lighten($dark-green, 4%) 30%, $dark-green 85%, lighten($dark-green, 2%) 100%);
+                &:active{
+                    background:$dark-green;
+                    background: -webkit-linear-gradient(top, lighten($dark-green, 6%) 0%, darken($dark-green,2%) 30%, lighten($dark-green, 2%) 70%, $dark-green 100%);
+                    background: linear-gradient(to bottom, lighten($dark-green, 6%) 0%, darken($dark-green,2%) 30%, lighten($dark-green, 2%) 70%, $dark-green 100%);
+                }
+                &:hover{
+                    font-size: 1.2em;
+                    letter-spacing: 1px;
+                }
+                span{
+                    color: $light-gold;
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        .links {
+            text-align: left;
+            padding:0;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+            background: $light-gold;
+            &:first-child{                
+                @include box-shadow(0 7px 4px -6px black inset, 0 -6px 4px -6px black inset);
+                a{
+                    margin: 4px 0;
+                }
+            }
+            a {
+                display: inline-block;
+                &.current li{                    
+                    border-top: 2px dotted $main-gold;
+                    border-bottom: 2px dotted $main-gold;
+                    background: $selected-color;
+                    &:hover{
+                        background: darken($selected-color, $amount: 7%);
+                    }
+                }
+                li {
+                    position: relative;
+                    padding: 7px 5px;
+                    max-height: 100%;
+                    &:hover{
+                        @include transition(background .1s ease-out !important);
+                        background: darken($light-gold, $amount: 7%);
+                    }                
+                }
+            }
+
+        }
+        input + .links{
+            a {
+                display: block;
+                &.current li{                                    
+                    border-top-width: 0;
+                    border-bottom-width: 0;
+                }
+                li{
+                    @include transition(all 0.25s cubic-bezier(.08,.82,.17,1));
+                    max-height: 0;                    
+                    padding: 0 5px;
+                    overflow: hidden;
+                    border-top-width: 0;
+                    border-bottom-width: 0;
+                }
+                &:first-child li{
+                    border-top: none !important;
+                    &:after{
+                        content: "";
+                        position: absolute;
+                        top:0;
+                        left:0;
+                        width: 100%;
+                        height: 100%;
+                        @include box-shadow(0 7px 4px -6px black inset);
+                    }
+                }
+                &:last-child li{
+                    border-bottom: none !important;
+                    @include box-shadow(0 -6px 4px -6px black inset);
+                }
+            }
+        }
+        input:checked + .links {
+            overflow:visible;
+            a{
+                &.current li{
+                    border-top: 2px dotted $main-gold;
+                    border-bottom: 2px dotted $main-gold; 
+                }
+                li{
+                    @include transition(all 1s cubic-bezier(.6,.66,.4,1.99));
+                    max-height:150px;                    
+                    padding: 7px 5px;
+                }
+
+            }
+        }
+    }
+}
