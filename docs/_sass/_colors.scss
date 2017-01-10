@@ -1,73 +1,42 @@
 /***** Colors *****/
 $variation : 30%; //How much variation there is between shades
+$colors:   ("blue":hsla(205, 100%, 56.5%, 1),
+            "green":hsla(100, 67.5%, 44.7%, 1),
+            "brown":hsla(20, 50%, 40.2%, 1),
+            "teal":hsla(142, 74.5%, 50.8%, 1),
+            "gold":hsla(51, 72%, 42%, 1));
 
-$main-blue : hsla(205, 100%, 56.5%, 1);
-$light-blue : lighten($main-blue, $variation);
-$dark-blue : darken($main-blue, $variation);
+@function color($key, $adjust:0) {
+  @if map-has-key($colors, $key) {
+    @if type-of($adjust) != "number"{
+        @warn "Type-of adjust `#{$adjust}` invalid.";
+        @return null;
+    } @else if $adjust == 0{
+        @return map-get($colors, $key);
+    } @else if $adjust > 0{
+        @return lighten(map-get($colors, $key),$adjust);
+    } @else {
+        @return darken(map-get($colors, $key),abs($adjust));
+    }
+  }
 
-$main-green : hsla(100, 67.5%, 44.7%, 1);
-$light-green : lighten($main-green, $variation);
-$dark-green : darken($main-green, $variation);
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
 
-$main-brown : hsla(20, 50%, 40.2%, 1);
-$light-brown : lighten($main-brown, $variation);
-$dark-brown : darken($main-brown, $variation);
+@each $colorName, $colorVal in $colors {
+    .#{$colorName} {
+        color: $colorVal;
+        &.dark{
+            color: darken($colorVal, $variation);
+        }
+        &.light{
+            color: lighten($colorVal, $variation);
+        }
+    }
+}
 
-$main-teal : hsla(142, 74.5%, 50.8%, 1);
-$light-teal : lighten($main-teal, $variation);
-$dark-teal : darken($main-teal, $variation);
-
-$main-gold : hsla(51, 72%, 42%, 1);
-$light-gold : lighten($main-gold, $variation);
-$dark-gold : darken($main-gold, $variation);
 
 
 //Specific colors related to an action
-$selected-color : lighten($main-gold, 15%);
-
-//Classes to achieve certain colors
-.blue{
-    color:$main-blue;
-    &.dark{
-        color:$dark-blue;
-    }
-    &.light{
-        color:$light-blue;
-    }
-}
-.green{
-    color:$main-green;
-    &.dark{
-        color:$dark-green;
-    }
-    &.light{
-        color:$light-green;
-    }
-}
-.teal{
-    color:$main-teal;
-    &.dark{
-        color:$dark-teal;
-    }
-    &.light{
-        color:$light-teal;
-    }
-}
-.brown{
-    color:$main-brown;
-    &.dark{
-        color:$dark-brown;
-    }
-    &.light{
-        color:$light-brown;
-    }
-}
-.gold{
-    color:$main-gold;
-    &.dark{
-        color:$dark-gold;
-    }
-    &.light{
-        color:$light-gold;
-    }
-}
+$selected-color : color("blue", 15%);
