@@ -16,8 +16,8 @@ article {
                 height: 100%;
                 padding: 0.1em 0.3em 0 0.2em;
                 border-radius: .5em;
-                background: desaturate(darken($light-blue,5%), 20%);
-                @include box-shadow(0 1px 4px 0 desaturate(darken($main-blue,8%), 50%) inset);
+                background: desaturate(color("blue",25%), 20%);
+                @include box-shadow(0 1px 4px 0 desaturate(color("blue",-8%), 50%) inset);
                 margin: 5px 0 0 0;
                 .icon-pencil{
                     padding-top: 4px;
@@ -54,8 +54,8 @@ article {
             padding: 10px 30px;
             font-size: 1.1em;
         }
-        background: $light-blue;
-        @include box-shadow(0 1px 6px 1px $dark-brown);
+        background: color("blue",$variation);
+        @include box-shadow(0 1px 6px 1px color("brown",-$variation));
 
         .center{
             text-align:center;

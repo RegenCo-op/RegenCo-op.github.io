@@ -1,7 +1,7 @@
 /***** Body *****/
 body{
     margin: 0 auto;
-    background: $main-brown;
+    background: color("brown");
     font-size: 100%;
     font-family: sans-serif;
 }
@@ -70,7 +70,7 @@ body{
 .title-banner{
     position: relative;
     z-index: 1;
-    background: $dark-teal;
+    background: color("teal",-$variation);
     padding: 3px 5px;
     margin: 0;
     @include box-shadow(0 2px 7px 0px black);
@@ -82,7 +82,7 @@ body{
         bottom: -30px;
         height:0;
         width:0;
-        border-top: 30px solid $dark-green;
+        border-top: 30px solid color("green", -$variation);
         border-left: 10px solid transparent;
     }
     &:after{
@@ -93,7 +93,7 @@ body{
         bottom: -30px;
         height:0;
         width:0;
-        border-top: 30px solid $dark-green;
+        border-top: 30px solid color("green", -$variation);
         border-right: 10px solid transparent;
     }
 }

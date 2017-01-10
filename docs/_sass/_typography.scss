@@ -10,7 +10,7 @@ h1.title-banner{
 .title-banner{
     font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif;
     font-size: 1.5em;
-    color: $light-gold;
+    color: color("gold",$variation);
     text-align: center;
     letter-spacing: 2px;
 }

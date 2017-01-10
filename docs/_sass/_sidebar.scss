@@ -59,7 +59,7 @@
         }
     }
     .categories{
-        $category-color: $dark-green;
+        $category-color: color("green", -$variation);
         position: relative;
         @include box-shadow(0 4px 8px -1px black);
         @include tablet-landscape{
@@ -73,7 +73,7 @@
             text-align: center;
 
             &:not(:last-of-type) div{
-                border-bottom: 1px dashed $main-gold;
+                border-bottom: 1px dashed color("gold");
             }
             div{
                 position: relative;
@@ -83,20 +83,20 @@
                 height: 56px;
                 display: table;
                 @include transition(all .1s ease-out);
-                background:$dark-green;
-                background: -webkit-linear-gradient(top, $dark-green 0%, lighten($dark-green, 4%) 30%, $dark-green 85%, lighten($dark-green, 2%) 100%);
-                background: linear-gradient(to bottom, $dark-green 0%, lighten($dark-green, 4%) 30%, $dark-green 85%, lighten($dark-green, 2%) 100%);
+                background:color("green", -$variation);
+                background: -webkit-linear-gradient(top, color("green", -$variation) 0%, lighten(color("green", -$variation), 4%) 30%, color("green", -$variation) 85%, lighten(color("green", -$variation), 2%) 100%);
+                background: linear-gradient(to bottom, color("green", -$variation) 0%, lighten(color("green", -$variation), 4%) 30%, color("green", -$variation) 85%, lighten(color("green", -$variation), 2%) 100%);
                 &:active{
-                    background:$dark-green;
-                    background: -webkit-linear-gradient(top, lighten($dark-green, 6%) 0%, darken($dark-green,2%) 30%, lighten($dark-green, 2%) 70%, $dark-green 100%);
-                    background: linear-gradient(to bottom, lighten($dark-green, 6%) 0%, darken($dark-green,2%) 30%, lighten($dark-green, 2%) 70%, $dark-green 100%);
+                    background:color("green", -$variation);
+                    background: -webkit-linear-gradient(top, lighten(color("green", -$variation), 6%) 0%, darken(color("green", -$variation),2%) 30%, lighten(color("green", -$variation), 2%) 70%, color("green", -$variation) 100%);
+                    background: linear-gradient(to bottom, lighten(color("green", -$variation), 6%) 0%, darken(color("green", -$variation),2%) 30%, lighten(color("green", -$variation), 2%) 70%, color("green", -$variation) 100%);
                 }
                 &:hover{
                     font-size: 1.2em;
                     letter-spacing: 1px;
                 }
                 span{
-                    color: $light-gold;
+                    color: color("gold",$variation);
                     display: table-cell;
                     vertical-align: middle;
                 }
@@ -109,7 +109,7 @@
             margin: 0;
             list-style: none;
             width: 100%;
-            background: $light-gold;
+            background: color("gold",$variation);
             &:first-child{                
                 @include box-shadow(0 7px 4px -6px black inset, 0 -6px 4px -6px black inset);
                 @include tablet-landscape{
@@ -127,8 +127,8 @@
                 position: relative;
                 &.current {
                     li{                    
-                        border-top: 2px dotted $main-gold;
-                        border-bottom: 2px dotted $main-gold;
+                        border-top: 2px dotted color("gold");
+                        border-bottom: 2px dotted color("gold");
                         background: $selected-color;
                         &:hover{
                             background: darken($selected-color, $amount: 7%);
@@ -167,7 +167,7 @@
                     max-height: 100%;
                     &:hover{
                         @include transition(background .1s ease-out !important);
-                        background: darken($light-gold, $amount: 7%);
+                        background: darken(color("gold",$variation), $amount: 7%);
                     }                
                 }
                 @include tablet-landscape{
@@ -229,8 +229,8 @@
             overflow:visible;
             a{
                 &.current li{
-                    border-top: 2px dotted $main-gold;
-                    border-bottom: 2px dotted $main-gold; 
+                    border-top: 2px dotted color("gold");
+                    border-bottom: 2px dotted color("gold"); 
                 }
                 li{
                     @include transition(all 1s cubic-bezier(.6,.66,.4,1.99));

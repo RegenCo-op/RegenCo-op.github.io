@@ -27,8 +27,8 @@ header{
 }
 
 .menubar{
-    $menubar-background: $dark-teal;
-    $menubar-foreground: $main-gold;
+    $menubar-background: color("teal",-$variation);
+    $menubar-foreground: color("gold");
     $icon-size: $menubar-height/7*3;
     position: fixed;
     z-index: 2;
@@ -51,7 +51,7 @@ header{
                 height: 100%;
                 display: table;
                 span{
-                    color: $light-gold;
+                    color: color("gold",$variation);;
                     display: table-cell;
                     vertical-align: middle;
                 }
@@ -136,8 +136,8 @@ header{
                 right: 15px;
                 border-radius: 35%;
                 border-top-left-radius: 80%;
-                background: $dark-teal;
-                @include box-shadow( 2px 2px 4px 1px $light-blue, -2px -2px 3px 0 darken($dark-teal,5%) inset);
+                background: color("teal",-$variation);
+                @include box-shadow( 2px 2px 4px 1px color("blue",$variation), -2px -2px 3px 0 darken(color("teal",-$variation),5%) inset);
             }
             >div{
                 $top-color: $menubar-foreground;
