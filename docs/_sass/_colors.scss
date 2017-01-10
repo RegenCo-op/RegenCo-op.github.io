@@ -7,6 +7,8 @@ $colors:   ("blue":hsla(205, 100%, 56.5%, 1),
             "gold":hsla(51, 72%, 42%, 1));
 
 @function color($key, $adjust:0) {
+    //Given a string $key, outputs the corresponding color if it exists in $colors.
+    //Given a percent $adjust, either lightens (if positive) or darkens (if negative) before returning the color.
   @if map-has-key($colors, $key) {
     @if type-of($adjust) != "number"{
         @warn "Type-of adjust `#{$adjust}` invalid.";
@@ -24,6 +26,7 @@ $colors:   ("blue":hsla(205, 100%, 56.5%, 1),
   @return null;
 }
 
+//Make classes for each color, also make light and dark versions
 @each $colorName, $colorVal in $colors {
     .#{$colorName} {
         color: $colorVal;

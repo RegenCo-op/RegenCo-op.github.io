@@ -84,12 +84,12 @@
                 display: table;
                 @include transition(all .1s ease-out);
                 background:color("green", -$variation);
-                background: -webkit-linear-gradient(top, color("green", -$variation) 0%, lighten(color("green", -$variation), 4%) 30%, color("green", -$variation) 85%, lighten(color("green", -$variation), 2%) 100%);
-                background: linear-gradient(to bottom, color("green", -$variation) 0%, lighten(color("green", -$variation), 4%) 30%, color("green", -$variation) 85%, lighten(color("green", -$variation), 2%) 100%);
+                background: -webkit-linear-gradient(top, color("green", -$variation) 0%, color("green", -$variation + 4%) 30%, color("green", -$variation) 85%, color("green", -$variation + 2%) 100%);
+                background: linear-gradient(to bottom, color("green", -$variation) 0%, color("green", -$variation + 4%) 30%, color("green", -$variation) 85%, color("green", -$variation + 2%) 100%);
                 &:active{
                     background:color("green", -$variation);
-                    background: -webkit-linear-gradient(top, lighten(color("green", -$variation), 6%) 0%, darken(color("green", -$variation),2%) 30%, lighten(color("green", -$variation), 2%) 70%, color("green", -$variation) 100%);
-                    background: linear-gradient(to bottom, lighten(color("green", -$variation), 6%) 0%, darken(color("green", -$variation),2%) 30%, lighten(color("green", -$variation), 2%) 70%, color("green", -$variation) 100%);
+                    background: -webkit-linear-gradient(top, color("green", -$variation + 6%) 0%, color("green", -$variation - 2%) 30%, color("green", -$variation + 2%) 70%, color("green", -$variation) 100%);
+                    background: linear-gradient(to bottom, color("green", -$variation + 6%) 0%, color("green", -$variation - 2%) 30%, color("green", -$variation + 2%) 70%, color("green", -$variation) 100%);
                 }
                 &:hover{
                     font-size: 1.2em;
@@ -167,7 +167,7 @@
                     max-height: 100%;
                     &:hover{
                         @include transition(background .1s ease-out !important);
-                        background: darken(color("gold",$variation), $amount: 7%);
+                        background: color("gold", $variation - 7%);
                     }                
                 }
                 @include tablet-landscape{
