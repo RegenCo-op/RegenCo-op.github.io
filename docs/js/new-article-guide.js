@@ -175,7 +175,6 @@ function attachTextInputsToButton(buttonForm, textSavesORstaticstrings) {
         });
         //Make sure all inputs are validated 
         buttonForm.button.addEventListener('click', function(evt) {
-            console.log("textInput Check");
             if(!textInput.isValid){
                 buttonForm.badInputCB(textInput);
                 evt.preventDefault();
