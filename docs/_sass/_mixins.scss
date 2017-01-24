@@ -43,3 +43,33 @@
   -o-transition: $args;
   transition: $args;
 }
+
+//Media queries
+$phone-landscape-width: 480px;
+$tablet-landscape-width: 960px;
+$desktop-small-width: 1024px;
+$desktop-large-width: 1366px;
+
+@mixin phone-landscape {
+  @media (min-width: #{$phone-landscape-width}){
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media (min-width: #{$tablet-landscape-width}){
+    @content;
+  }
+}
+
+@mixin desktop-small {
+  @media (min-width: #{$desktop-small-width}){
+    @content;
+  }
+}
+
+@mixin desktop-large {
+  @media (min-width: #{$desktop-large-width}){
+    @content;
+  }
+}

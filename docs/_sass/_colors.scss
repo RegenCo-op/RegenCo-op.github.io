@@ -1,0 +1,43 @@
+/***** Colors *****/
+$variation : 30%; //How much variation there is between shades
+$colors:   ("blue":hsla(205, 100%, 56.5%, 1),
+            "green":hsla(100, 67.5%, 44.7%, 1),
+            "brown":hsla(20, 50%, 40.2%, 1),
+            "teal":hsla(142, 74.5%, 50.8%, 1),
+            "gold":hsla(51, 72%, 42%, 1));
+
+@function color($key, $adjust:0) {
+    //Given a string $key, outputs the corresponding color if it exists in $colors.
+    //Given a percent $adjust, either lightens (if positive) or darkens (if negative) before returning the color.
+  @if map-has-key($colors, $key) {
+    @if type-of($adjust) != "number"{
+        @warn "Type-of adjust `#{$adjust}` invalid.";
+        @return null;
+    } @else if $adjust == 0{
+        @return map-get($colors, $key);
+    } @else if $adjust > 0{
+        @return lighten(map-get($colors, $key),$adjust);
+    } @else {
+        @return darken(map-get($colors, $key),abs($adjust));
+    }
+  }
+
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
+
+//Make classes for each color, also make light and dark versions
+@each $colorName, $colorVal in $colors {
+    .#{$colorName} {
+        color: $colorVal;
+        &.dark{
+            color: darken($colorVal, $variation);
+        }
+        &.light{
+            color: lighten($colorVal, $variation);
+        }
+    }
+}
+
+//Specific colors related to an action
+$selected-color : color("gold", 15%);

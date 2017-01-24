@@ -1,0 +1,96 @@
+/***** Articles *****/
+article {
+    position:relative;
+    
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+
+    .improve{
+        display: none;
+        @include tablet-landscape{
+            display: block;
+            a{
+                float: right;
+                height: 100%;
+                padding: 0.1em 0.3em 0 0.2em;
+                border-radius: .5em;
+                background: desaturate(color("blue",25%), 20%);
+                @include box-shadow(0 1px 4px 0 desaturate(color("blue",-8%), 50%) inset);
+                margin: 5px 0 0 0;
+                .icon-pencil{
+                    padding-top: 4px;
+                    max-height: 2em;
+                    max-width: 2em;
+                }
+                .icon-pencil+span{
+                    display: inline-block;
+                    max-width: 0;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    @include transition(max-width .5s ease-out);
+                }
+                &:hover .icon-pencil+span{
+                    max-width: 200px;
+                    @include transition(max-width .5s ease-out);
+                }
+            }
+            @at-root .icon-pencil:before{
+                display: inline-block;
+                text-align: right; 
+                content: "\270E";
+                font-size: 1.6em;
+            }
+        }
+    }
+
+    .content{
+        padding:5px 5px;
+        @include tablet-landscape {
+            padding:10px 20px;
+        }
+        @include desktop-small {
+            padding: 10px 30px;
+            font-size: 1.1em;
+        }
+        background: color("blue",$variation);
+        @include box-shadow(0 1px 6px 1px color("brown",-$variation));
+
+        .center{
+            text-align:center;
+        }        
+
+        ol{
+            counter-reset: item;
+            h2, h3, h4, h5{
+                display: inline-block;
+                margin: 0;
+            }
+        }
+        ol > li{
+            display: block;
+            position: relative;
+            margin-top: 2px;
+        }
+        ol > li:before{
+            content: counters(item, ".") ") "; 
+            counter-increment: item;
+            position:absolute;
+            right: 100%;
+            margin: 0 7px 0 0;
+        }
+        h3 ~ *:last-child {
+            margin-bottom: 25px;
+        }
+        h3 + *{
+            margin-top:10px;
+        }
+        h4 ~ *:last-child {
+            margin-bottom: 20px;
+        }
+        h4 + *{
+            margin-top:5px;
+        }
+    }
+}

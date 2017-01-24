@@ -1,3 +1,9 @@
+
+/***** Variables *****/
+$menubar-height: 56px;
+
+
+//Border box everywhere!
 html {
   box-sizing: border-box;
 }
@@ -13,18 +19,3 @@ html {
  */
 body { -webkit-animation: bugfix infinite 1s; }
 @-webkit-keyframes bugfix { from {padding:0;} to {padding:0;} }
-
-/* Clearfix after every .grid */
-.grid {
-  display: block;
-  clear: both;
-  *zoom: 1;
-}
-.grid:before, .grid:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.grid:after {
-  clear: both;
-}

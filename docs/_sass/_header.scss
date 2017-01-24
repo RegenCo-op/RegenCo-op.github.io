@@ -1,0 +1,175 @@
+/***** Header & Menubar *****/
+header{
+    position: relative;
+    
+    #logo-wrapper{
+        padding:10px;
+    }
+    #logo-picture {
+        position:relative;
+        background-image: url(/images/compressed/logo.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 0;
+        padding-top: 459px / 1180px * 100%; /* (img-height / img-width * container-width) */
+    }
+    #logo-link{
+        position:absolute;
+        top:0;
+        width: 100%;
+        height: 100%;
+         /* Hide the text. */
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+.menubar{
+    $menubar-background: color("teal",-$variation);
+    $menubar-foreground: color("gold");
+    $icon-size: $menubar-height/7*3;
+    position: fixed;
+    z-index: 2;
+    top:0;
+    left:0;
+    height:$menubar-height;
+    width:100%;
+    background: $menubar-background;
+    @include box-shadow(1px 1px 4px 1px black);
+    @include tablet-landscape{
+        display: static;
+        position: relative;
+    }
+
+    .page-category{
+        height: 100%;
+        overflow-y: auto;
+        padding: 3px 0 3px 3px;
+        div{
+                height: 100%;
+                display: table;
+                span{
+                    color: color("gold",$variation);;
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+        }
+    }
+    nav {
+        height: 100%;
+        width: auto;
+        float:right;
+    }
+    @at-root .icon-box{
+        float:right;
+        height:56px;
+        width:$menubar-height;
+        padding: $menubar-height/7*2;
+        &.home>div{
+            $house-color: $menubar-foreground;
+            /* roof */
+            position: relative;
+            width:0;
+            height:0;
+            border-left:$icon-size/2 solid transparent;
+            border-right: $icon-size/2 solid transparent;
+            border-bottom: $icon-size/2*5/4 solid $house-color;
+            &:before{
+                /* chimney */
+                content: "";
+                position: absolute;
+                left:-$icon-size/3;
+                top:$icon-size/12;
+                height:$icon-size/2 - 2px;
+                width:$icon-size/6;
+                background: $house-color;
+            }
+            &:after{
+                /* house */
+                content: "";
+                position: absolute;
+                left:-$icon-size/3;
+                top:$icon-size/2 - 1px;
+                height:$icon-size/2 + 1px;
+                width:$icon-size*2/3;
+                background: $house-color;
+            }
+        }
+        &.menu{
+            @include tablet-landscape{
+                display: none;
+            }
+            >div{
+                $menu-color: $menubar-foreground;
+                /* top bar */
+                position:relative;
+                background: $menu-color;
+                height:$icon-size/4;
+                width: $icon-size;
+                &:before{
+                    /* middle bar */
+                    content: "";
+                    position: absolute;
+                    top:$icon-size/4 + $icon-size/4/2;
+                    height:$icon-size/4;
+                    width:$icon-size;
+                    background: $menu-color;
+                }
+                &:after{
+                    /* bottom bar */
+                    content: "";
+                    position: absolute;
+                    top:$icon-size/2 + $icon-size/4;
+                    height:$icon-size/4;
+                    width:$icon-size;
+                    background: $menu-color;
+                }
+            }
+        }
+        &.top{
+            @include tablet-landscape{
+                //Move to bottom right as a go-to-top arrow
+                position: fixed;
+                bottom: 15px;
+                right: 15px;
+                border-radius: 35%;
+                border-top-left-radius: 80%;
+                background: color("teal",-$variation);
+                @include box-shadow( 2px 2px 4px 1px color("blue",$variation), -2px -2px 3px 0 color("teal",-$variation - 5%) inset);
+            }
+            >div{
+                $top-color: $menubar-foreground;
+                /* arrowhead */
+                position: relative;
+                left:$icon-size/6;
+                width:0;
+                height:0;
+                border-left:$icon-size/3 solid transparent;
+                border-right: $icon-size/3 solid transparent;
+                border-bottom: $icon-size/2 solid $top-color;
+                &:before{
+                    /* vertical bar */
+                    border-bottom-left-radius: $icon-size/5;
+                    content: "";
+                    position: absolute;
+                    top:$icon-size/2 - 2px;
+                    left:-$icon-size/8;
+                    height:$icon-size/2 + 2px;
+                    width:$icon-size/4;
+                    background: $top-color;
+                }
+                &:after{
+                    /* horizontal bar */
+                    content: "";
+                    position: absolute;
+                    top:$icon-size*3/4;
+                    height:$icon-size/4;
+                    width:$icon-size/3;
+                    background: $top-color;
+                }
+            }
+        }
+    }
+}
