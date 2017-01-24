@@ -91,51 +91,56 @@ function createTextSaveForm(defaultVal, description, validatorCB){
 }
 
 function createButtonForm(buttonText, urlInputs) {    
-    //Create form
-    var form = document.createElement("form");
-    form.target = "_blank";
-    form.errors = {};
+    //Create wrapper
+    var buttonForm = document.createElement("div");
+    buttonForm.errors = {};
+    buttonForm.activeErrors = 0;
     //Create button
     var button = document.createElement("button"); 
-    button.type = "submit"; 
+    button.type = "button"; 
     button.appendChild(document.createTextNode(buttonText));
-    form.appendChild(button);
-    form.button = button;
-    //Attach url inputs to button (if they exist)
+    //Attach button to form
+    buttonForm.appendChild(button);
+    buttonForm.button = button;
+    //Attach url inputs to button form (if they exist)
     if(urlInputs) {
         var copy = [].slice.call(arguments);
-        copy.splice(0,1,form);
+        copy.splice(0,1,buttonForm);
         attachTextInputsToButton.apply(this, copy);
     }
-    //Callback if we get a bad form input.
-    form.badInputCB = function(textInput){
+    
+    //Callback if we get a bad button input.
+    buttonForm.badInputCB = function(textInput){
         //Check if we already have this error
-        if(form.errors[textInput.id]){
-            if(document.getElementById(form.errors[textInput.id].id)){
+        if(buttonForm.errors[textInput.id]){
+            if(document.getElementById(buttonForm.errors[textInput.id].id)){
                 //Error exists in dom; do nothing                
             }
             else{
                 //Add it back to the dom
-                form.appendChild(form.errors[textInput.id]);
+                buttonForm.appendChild(buttonForm.errors[textInput.id]);
+                buttonForm.activeErrors += 1;
             }
         }
         else{
             //Create a new error span
             var error = document.createElement("span");
-            form.errors[textInput.id] = error;
+            buttonForm.errors[textInput.id] = error;
             error.class = "input-error";
             error.id = "error-" + textInput.id + "-" + Math.random();
             error.appendChild(document.createTextNode("Please fill out a valid " + textInput.description + " above."));
-            form.appendChild(error);
+            buttonForm.appendChild(error);
+            buttonForm.activeErrors += 1;
         }
     };
-    form.removeError = function(textInput){
-        if(!form.errors[textInput.id] || !document.getElementById(form.errors[textInput.id].id)){ 
+    buttonForm.removeError = function(textInput){
+        if(!buttonForm.errors[textInput.id] || !document.getElementById(buttonForm.errors[textInput.id].id)){ 
             return; //only remove errors if they exist and are in dom
         }        
-        form.removeChild(form.errors[textInput.id]);
+        buttonForm.removeChild(buttonForm.errors[textInput.id]);
+        buttonForm.activeErrors -= 1;
     };
-    return form;
+    return buttonForm;
 }
 
 function attachTextInputsToButton(buttonForm, textSavesORstaticstrings) {
@@ -157,19 +162,20 @@ function attachTextInputsToButton(buttonForm, textSavesORstaticstrings) {
     buttonForm.textInputs.forEach(function(textInput) {
         //Update the form link and remove the error when the user fixes the problem.
         textInput.whenValid(function() {
-            buttonForm.action = '';
+            buttonForm.link = '';
             for(let comp of buttonForm.urlComps){
                 if(typeof comp === "string"){
-                    buttonForm.action += comp;
+                    buttonForm.link += comp;
                 }
                 else{
-                    buttonForm.action += encodeURIComponent(comp.input.value);
+                    buttonForm.link += encodeURIComponent(comp.input.value);
                 }
             }
             buttonForm.removeError(textInput);
         });
         //Make sure all inputs are validated 
-        buttonForm.addEventListener('submit', function(evt) {
+        buttonForm.button.addEventListener('click', function(evt) {
+            console.log("textInput Check");
             if(!textInput.isValid){
                 buttonForm.badInputCB(textInput);
                 evt.preventDefault();
@@ -177,6 +183,13 @@ function attachTextInputsToButton(buttonForm, textSavesORstaticstrings) {
             }
         });
     }, this);
+
+    //Open link in new tab when user clicks the button
+    buttonForm.button.addEventListener('click', function (evt) {
+        if(!buttonForm.activeErrors){
+            window.open(buttonForm.link,'_blank');
+        }
+    });
 }
 
 //Input fields
@@ -209,7 +222,6 @@ var articlesButton = createButtonForm("Click here to upload your article", "http
 var githubArticles = document.getElementById("github-articles");
 githubArticles.insertBefore(articlesButton, githubArticles.firstChild);
 
-var proposeButton = createButtonForm("Click here to propose your article!", "https://github.com/RegenCo-op/RegenCo-op/compare/master...", username, ":", permalink);
-proposeButton.button.name="expand"; proposeButton.button.value="1";
+var proposeButton = createButtonForm("Click here to propose your article!", "https://github.com/RegenCo-op/RegenCo-op/compare/master...", username, ":", permalink, "?expand=1");
 var githubPropose = document.getElementById("github-propose");
 githubPropose.insertBefore(proposeButton, githubPropose.firstChild);
